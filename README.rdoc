@@ -37,4 +37,4 @@ When an account is suspended the date and time of suspension is recorded, as wel
 
 Released under the MIT license
 
-Copyright (c) 2010, 2011 Josh Kalderimis, Amol Kelkar
+Copyright (c) 2010, 2011 Josh Kalderimis, Amol Kelkar, Brian Artiaco
