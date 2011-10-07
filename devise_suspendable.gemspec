@@ -5,14 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{devise_suspendable}
-  s.version = "0.6.0"
+  s.version = "0.6.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Amol Kelkar"]
-  s.date = %q{2011-04-27}
-  s.description = %q{Devise-Suspendable is a simple module which uses the [Devise](http://github.com/plataformatec/devise) authentication framework Activatable module hooks to provide a simple clean way to suspend an account.
-  When an account is suspended the date and time of suspension is recorded, as well as an optional reason, for easy reference.}
-  s.email = %q{kelkar.amol@gmail.com}
+  s.authors = ["Amol Kelkar", "Josh Kalderimis", "Brian Artiaco"]
+  s.date = %q{2011-10-07
+  s.description = %q{Has a user left the organisation? Or maybe the account created was bogus? Remove access for a user with a click of a button}
+  s.email = %q{bartiaco@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -21,19 +20,29 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
+    "MIT-LICENSE",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "devise_suspendable.gemspec",
     "lib/devise_suspendable.rb",
+    "lib/devise_suspendable/model.rb",
+    "lib/devise_suspendable/rails.rb",
+    "lib/generators/devise_suspendable/.DS_Store",
+    "lib/generators/devise_suspendable/devise_suspendable_generator.rb",
+    "lib/generators/devise_suspendable/templates/.DS_Store",
+    "lib/generators/devise_suspendable/templates/migration.rb",
+    "rails/init.rb",
     "spec/devise_suspendable_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/amolk/devise_suspendable}
+  s.homepage = %q{http://github.com/KingOfWeb/devise_suspendable}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Device module that provides a simple clean way to suspend an account}
+  s.rubygems_version = %q{1.8.10}
+  s.summary = %q{Devise user account suspension module}
   s.test_files = [
     "spec/devise_suspendable_spec.rb",
     "spec/spec_helper.rb"
@@ -45,7 +54,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 3.0.4"])
       s.add_runtime_dependency(%q<warden>, [">= 0"])
-      s.add_runtime_dependency(%q<devise>, [">= 0"])
+      s.add_runtime_dependency(%q<devise>, [">= 1.4.0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
@@ -53,7 +62,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rails>, [">= 3.0.4"])
       s.add_dependency(%q<warden>, [">= 0"])
-      s.add_dependency(%q<devise>, [">= 0"])
+      s.add_dependency(%q<devise>, [">= 1.4.0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
@@ -62,7 +71,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rails>, [">= 3.0.4"])
     s.add_dependency(%q<warden>, [">= 0"])
-    s.add_dependency(%q<devise>, [">= 0"])
+    s.add_dependency(%q<devise>, [">= 1.4.0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
