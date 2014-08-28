@@ -21,18 +21,22 @@ module Devise
       end
 
       def suspended?
-        self.suspended_at?
+        self.suspended_at? && suspended_at < Time.zone.now
       end
 
-      def suspend!(reason = nil)
+      def suspension_pending?
+        self.suspended_at? && suspended_at > Time.zone.now
+      end
+
+      def suspend!(reason = nil, suspend_at = nil)
         return if suspended?
-        self.suspended_at = Time.zone.now
+        self.suspended_at = suspend_at || Time.zone.now
         self.suspension_reason = reason
         self.save(:validate => false)
       end
 
       def unsuspend!
-        return if !suspended?
+        return unless suspended? || suspension_pending?
         self.suspended_at = nil
         self.suspension_reason = nil
         self.save(:validate => false) if self.changed?
@@ -42,7 +46,7 @@ module Devise
       def active_for_authentication?
         super && !suspended?
       end
-      
+
       # Overwrites invalid_message from Devise::Models::Authenticatable to define
       # the correct reason for blocking the sign in.
       def inactive_message
